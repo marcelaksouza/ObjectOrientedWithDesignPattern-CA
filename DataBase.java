@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class DataBase {
 	private static DataBase instance = new DataBase("52.50.23.197", "3306", "world", "cctstudent", "Pass1234!");
-	Connection conn = null;
+	Connection conn;
 	Statement stmt = null;
 	String host;
 	String port;
@@ -31,19 +31,18 @@ public class DataBase {
 		DataBase.instance = instance;
 	}
 	
-	public void connect() {
-		 try {
+	public void connect()  {
+		if (conn != null) {
+			return;
+		} 
+		try {
 		        // Load the database driver
-		        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+		        Class.forName("com.mysql.cj.jdbc.Driver");
 		        String dbServer = "jdbc:mysql://"+host+":"+port+"/"+dbName;
 		        
 		        // Get a connection to the database
 		        conn = DriverManager.getConnection(dbServer, user, password);
-		        if (conn != null) {
-	        }
-	        // Get a statement from the connection
-	        stmt = conn.createStatement();
-	        System.out.println("Database connected");
+		        System.out.println("Database connected");
 	    } catch (SQLException se) {
 	        System.out.println("SQL Exception:");
 
@@ -61,14 +60,16 @@ public class DataBase {
 		
 	
 	public void disconnect() {
-		try {
-			stmt.close();
-			conn.close();
-			System.out.println("Database disconnected");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println(e);
+		if(conn != null) {
+			try {
+				conn.close();
+				System.out.println("Database disconnected");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println(e);
+			}
 		}
+		conn = null;	
 	}
 }
