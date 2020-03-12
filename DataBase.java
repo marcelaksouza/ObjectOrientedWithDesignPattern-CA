@@ -8,7 +8,6 @@ import java.sql.Statement;
 public class DataBase {
 	private static DataBase instance = new DataBase("52.50.23.197", "3306", "world", "cctstudent", "Pass1234!");
 	Connection conn;
-	Statement stmt = null;
 	String host;
 	String port;
 	String dbName;
@@ -23,6 +22,10 @@ public class DataBase {
 		this.password = password;
 	}
 
+	public Connection getConnection() {
+		return conn;
+	}
+	
 	public static DataBase getInstance() {
 		return instance;
 	}
@@ -54,11 +57,10 @@ public class DataBase {
 	            se = se.getNextException();
 	        }
 	    } catch (Exception e) {
-	        System.out.println(e);
+	        System.out.println("connection error"+e);
 	    	}
 		}
 		
-	
 	public void disconnect() {
 		if(conn != null) {
 			try {

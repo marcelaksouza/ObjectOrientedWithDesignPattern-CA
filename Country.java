@@ -5,16 +5,16 @@ public class Country {
 	private String continent;
 	private String code;
 	private String name;
-	private String HeadOfState;
-	private double surfaceArea;
+	private String headOfState;
+	private float surfaceArea;
 
-	public Country(Continent continent, String name, double surfaceArea, String headOfState) {
+	public Country(String code, Continent continent, String name, float surfaceArea, String headOfState) {
 		super();
 		this.continent = continent.getContinent();
-		this.code = continent.getCode();
+		this.code = code;
 		this.name = name;
 		this.surfaceArea = surfaceArea;
-		HeadOfState = headOfState;
+		this.headOfState = headOfState;
 	}
 
 	public String getContinent() {
@@ -42,18 +42,18 @@ public class Country {
 	}
 
 	public String getHeadOfState() {
-		return HeadOfState;
+		return headOfState;
 	}
 
 	public void setHeadOfState(String headOfState) {
-		HeadOfState = headOfState;
+		headOfState = headOfState;
 	}
 	
-	public double getSurfaceArea() {
+	public float getSurfaceArea() {
 		return surfaceArea;
 	}
 
-	public void setSurfaceArea(double surfaceArea) {
+	public void setSurfaceArea(float surfaceArea) {
 		this.surfaceArea = surfaceArea;
 	}
 }

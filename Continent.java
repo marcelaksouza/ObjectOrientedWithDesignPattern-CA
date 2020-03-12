@@ -1,27 +1,22 @@
 package ObjectOrientedWithDesignPattern_CA;
 
 public enum Continent {
-	south_America("South America", "21U"),
-	north_America("North America", "6NE"),
-	oceania("Oceania", "9K8"),
-	europe("Europe", "3AL"),
-	africa("Africa" , "AFD"),
-	asia("Asia", "24E"),
-	antarctica("Antarctica","1EM");
+	south_America("South America"),
+	north_America("North America"),
+	oceania("Oceania"),
+	europe("Europe"),
+	africa("Africa"),
+	asia("Asia"),
+	antarctica("Antarctica");
 	
 	private final String continent;
-	private final String code;
 	
-	private Continent(String continent, String code) {
+	private Continent(String continent) {
 		this.continent = continent;
-		this.code = code;
 	}
 	
 	public String getContinent() {
 		return continent;
-	}
-	public String getCode() {
-		return code;
 	}
 	
 }
