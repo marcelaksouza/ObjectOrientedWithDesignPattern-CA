@@ -19,6 +19,27 @@ public enum Continent {
 		return continent;
 	}
 	
+	
+//	public static Continent getValueOf(String value) {
+//		
+//		if(value.equals("Europe")) {
+//			return europe;
+//		}
+//		
+//		return null;
+//	}
+	
+	public static Continent getValueOf(String value) {
+      
+		for (Continent continetEnum : Continent.values()) {
+            if (continetEnum.continent.equalsIgnoreCase(value)) {
+                return continetEnum;
+            }
+        }
+        return null;
+    }
+	
+	
 }
 
 //we can use Continent.valueOf("Country1").continent();

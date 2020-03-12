@@ -46,7 +46,7 @@ public class Country {
 	}
 
 	public void setHeadOfState(String headOfState) {
-		headOfState = headOfState;
+		this.headOfState = headOfState;
 	}
 	
 	public float getSurfaceArea() {
@@ -56,4 +56,16 @@ public class Country {
 	public void setSurfaceArea(float surfaceArea) {
 		this.surfaceArea = surfaceArea;
 	}
+	
+	@Override
+	public String toString() {
+	        System.out.println("Code : " + getCode());
+	        System.out.println("Continent : " + getContinent());
+	        System.out.println("Name : " + getName());
+	        System.out.println("Head Of State : " + getHeadOfState());
+	        System.out.println("surfaceArea : " + getSurfaceArea());
+	        System.out.println();
+			return null;
+	 }
+	
 }

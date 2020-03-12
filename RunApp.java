@@ -1,5 +1,11 @@
 package ObjectOrientedWithDesignPattern_CA;
 
+import java.util.List;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+
 public class RunApp {
 	
 	DataBase db = DataBase.getInstance();
@@ -19,8 +25,21 @@ public class RunApp {
 //		DataBase.getInstance().disconnect();;
 		
 	//View.mainMenu();	
-	//precisa testar pra adicionar um country
-		countryDAO.addCountry(new Country("T7T",Continent.europe,"test",1000F,"test"));
+	
+	//countryDAO.addCountry(new Country("T7T",Continent.europe,"test",1000F,"test"));
+	
+	try {
+		ArrayList<Country> countryList = countryDAO.getAllCountries();
+		 Iterator<Country> iterator = countryList.iterator();
+	      while(iterator.hasNext()) {
+	         System.out.println(iterator.next());
+	      } 
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
 	}
-	//Country(String code, Continent continent, String name, float surfaceArea, String headOfState)
+	
 }
+
+//Arrays.toString(list.toArray().toString)
