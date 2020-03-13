@@ -70,7 +70,7 @@ public class CountryDAO {
 		DataBase.getInstance().connect();
 		Connection conn = DataBase.getInstance().getConnection();
 		Statement stmt=	conn.createStatement();
-		String query = "SELECT Code, Name, Continent, SurfaceArea, HeadOfState FROM country WHERE Code =" + code +";";
+		String query = "SELECT Code, Name, Continent, SurfaceArea, HeadOfState FROM country WHERE Code =\"" + code +"\";";
 		//execute second query and save the result set into the variable rs
 		ResultSet rs = stmt.executeQuery(query);
 	    
@@ -99,7 +99,7 @@ public class CountryDAO {
 		DataBase.getInstance().connect();
 		Connection conn = DataBase.getInstance().getConnection();
 		Statement stmt=	conn.createStatement();
-		String query = "SELECT Code, Name, Continent, SurfaceArea, HeadOfState FROM country where Name =" + name +";";
+		String query = "SELECT Code, Name, Continent, SurfaceArea, HeadOfState FROM country where Name =\"" + name +"\";";
 		//execute second query and save the result set into the variable rs
 		ResultSet rs = stmt.executeQuery(query);
 	    

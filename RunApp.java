@@ -25,7 +25,7 @@ public class RunApp {
 
 		
 //		countryDAO.getOneCountryByCode("T7T");
-		System.out.println(countryDAO.getOneCountryByCode("T7T"));
+		System.out.println(countryDAO.getOneCountryByName("test"));
 	
 	//countryDAO.addCountry(new Country("T7T",Continent.europe,"test",1000F,"test"));
 	
