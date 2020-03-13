@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DataBase {
-	private static DataBase instance = new DataBase("52.50.23.197", "3306", "world", "cctstudent", "Pass1234!");
+public class dbConnectMySQL extends dbConnect {
+	private static dbConnect instance = new dbConnectMySQL("52.50.23.197", "3306", "world", "cctstudent", "Pass1234!");
 	Connection conn;
 	String host;
 	String port;
@@ -14,7 +14,7 @@ public class DataBase {
 	String user;
 	String password;
 	
-	private DataBase(String host, String port, String dbName,String user, String password) {
+	private dbConnectMySQL(String host, String port, String dbName,String user, String password) {
 		this.host = host;
 		this.port = port;
 		this.dbName = dbName;
@@ -22,18 +22,20 @@ public class DataBase {
 		this.password = password;
 	}
 
+	@Override
 	public Connection getConnection() {
 		return conn;
 	}
 	
-	public static DataBase getInstance() {
+	public static dbConnect getInstance() {
 		return instance;
 	}
 
-	public static void setInstance(DataBase instance) {
-		DataBase.instance = instance;
+	public static void setInstance(dbConnect instance) {
+		dbConnectMySQL.instance = instance;
 	}
 	
+	@Override
 	public void connect()  {
 		if (conn != null) {
 			return;
@@ -61,6 +63,7 @@ public class DataBase {
 	    	}
 		}
 		
+	@Override
 	public void disconnect() {
 		if(conn != null) {
 			try {
