@@ -17,27 +17,27 @@ public class RunApp {
 //		View view = new View();
 //		Controller controller = new Controller(db, view);
 //		CountryDAO countryDAO = new CountryDAO();
+		//View.mainMenu();	
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//runApp();
-//		DataBase.getInstance().connect();
-//		DataBase.getInstance().disconnect();;
+
 		
-	//View.mainMenu();	
+//		countryDAO.getOneCountryByCode("T7T");
+		System.out.println(countryDAO.getOneCountryByCode("T7T"));
 	
 	//countryDAO.addCountry(new Country("T7T",Continent.europe,"test",1000F,"test"));
 	
-	try {
-		ArrayList<Country> countryList = countryDAO.getAllCountries();
-		 Iterator<Country> iterator = countryList.iterator();
-	      while(iterator.hasNext()) {
-	         System.out.println(iterator.next());
-	      } 
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		}
+//	try {
+//		ArrayList<Country> countryList = countryDAO.getAllCountries(); 
+//		for(Country country : countryList) {
+//			System.out.println(country);
+//		}
+//	} catch (SQLException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//		}
 	}
 	
 }

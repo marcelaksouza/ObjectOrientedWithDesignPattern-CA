@@ -59,13 +59,7 @@ public class Country {
 	
 	@Override
 	public String toString() {
-	        System.out.println("Code : " + getCode());
-	        System.out.println("Continent : " + getContinent());
-	        System.out.println("Name : " + getName());
-	        System.out.println("Head Of State : " + getHeadOfState());
-	        System.out.println("surfaceArea : " + getSurfaceArea());
-	        System.out.println();
-			return null;
+	        return "Code: " + this.code + "\nName: " + this.name + "\nContinent: " + this.continent + "\nHead Of State: " + this.headOfState + "\nSurface Area: " + this.surfaceArea + "\n";
 	 }
 	
 }
