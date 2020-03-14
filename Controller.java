@@ -2,11 +2,12 @@ package ObjectOrientedWithDesignPattern_CA;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Controller {
-	private static View view = new View();
-	private static MySQLCountryDAO mySQLcountryDAO = new MySQLCountryDAO();
+	private static Client view = new Client();
+	private static CountryDAO countryDAO = new CountryDAO();
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -18,8 +19,8 @@ public class Controller {
 		mainMenuSwitch();
 	}
 	
-	public static void mainMenuSwitch(){
-		switch(Integer.parseInt(view.readUserInput())){
+	public static void mainMenuSwitch(){	
+		switch(view.readUserInputInt()){
 		case 1:{
 			printAllCountries();
 			start();
@@ -29,28 +30,28 @@ public class Controller {
 			start();
 		}break;
 		case 3:{
-			//System.out.println(view.getByNameForm());
-			printOneByName("test");
+			printOneByName(view.getByNameForm());
 			start();
 		}break;
 		case 4:{
-			view.printMap(view.addCountryForm()); 
+			addCountry(view.addCountryForm());
 			start();
-			//falta conecetar com db
 		}break; 
 		case 5:{
 			//exit
+			DbConnectMySQL.getInstance().disconnect();;
 			System.out.println("Good Bye");
 			System.exit(0);
 		}break; 
 		default:
 			System.out.println("Please type a valid option");
+			start();
 		}
 	}
 	
 	public static void printAllCountries() {
 		try {
-			ArrayList<Country> countryList = mySQLcountryDAO.getAllCountries();
+			ArrayList<Country> countryList = countryDAO.getAllCountries();
 			for (Country country: countryList) {
 				System.out.println(country);
 			}
@@ -61,11 +62,28 @@ public class Controller {
 	}
 
 	public static void printOneByCode(String code) {
-		System.out.println(mySQLcountryDAO.getOneCountryByCode(code));
+		System.out.println(countryDAO.getOneCountryByCode(code));
 	}
 	
 	public static void printOneByName(String name) {
-		System.out.println(mySQLcountryDAO.getOneCountryByName(name));
+		
+		System.out.println(countryDAO.getOneCountryByName(name));
+	}
+	
+	
+	public static void addCountry(HashMap<String, String> countrymap) {
+		
+		
+		String code = countrymap.get("code");
+		Continent continent = Continent.getValueOf(countrymap.get("continent"));
+		String name =  countrymap.get("name");
+		Float surfaceArea = Float.parseFloat(countrymap.get("surfaceArea"));
+		String headOfState = countrymap.get("headOfState");
+		Country country = new Country(code, continent, name , surfaceArea, headOfState);
+				  
+				 
+		countryDAO.addCountry(country);
+		printOneByCode(countrymap.get("code"));
 	}
 }
 

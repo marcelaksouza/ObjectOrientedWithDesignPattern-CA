@@ -2,7 +2,7 @@ package ObjectOrientedWithDesignPattern_CA;
 
 import java.sql.Connection;
 
-public abstract class dbConnect {
+public abstract class DbConnectFactory {
 
 	public abstract Connection getConnection();
 

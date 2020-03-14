@@ -3,10 +3,10 @@ package ObjectOrientedWithDesignPattern_CA;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-public class dbConnectMySQL extends dbConnect {
-	private static dbConnect instance = new dbConnectMySQL("52.50.23.197", "3306", "world", "cctstudent", "Pass1234!");
+
+public class DbConnectMySQL extends DbConnectFactory {
+	private static DbConnectFactory instance = new DbConnectMySQL("52.50.23.197", "3306", "world", "cctstudent", "Pass1234!");
 	Connection conn;
 	String host;
 	String port;
@@ -14,7 +14,7 @@ public class dbConnectMySQL extends dbConnect {
 	String user;
 	String password;
 	
-	private dbConnectMySQL(String host, String port, String dbName,String user, String password) {
+	private DbConnectMySQL(String host, String port, String dbName,String user, String password) {
 		this.host = host;
 		this.port = port;
 		this.dbName = dbName;
@@ -27,12 +27,12 @@ public class dbConnectMySQL extends dbConnect {
 		return conn;
 	}
 	
-	public static dbConnect getInstance() {
+	public static DbConnectFactory getInstance() {
 		return instance;
 	}
 
-	public static void setInstance(dbConnect instance) {
-		dbConnectMySQL.instance = instance;
+	public static void setInstance(DbConnectFactory instance) {
+		DbConnectMySQL.instance = instance;
 	}
 	
 	@Override
