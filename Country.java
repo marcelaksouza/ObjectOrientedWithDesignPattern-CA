@@ -1,13 +1,16 @@
 package ObjectOrientedWithDesignPattern_CA;
 
+//country class
+
 public class Country {
-	//should i change to char?
+	//global variables
 	private String continent;
 	private String code;
 	private String name;
 	private String headOfState;
 	private float surfaceArea;
 
+	//constructor
 	public Country(String code, Continent continent, String name, float surfaceArea, String headOfState) {
 		super();
 		this.continent = continent.getContinent();
@@ -17,6 +20,7 @@ public class Country {
 		this.headOfState = headOfState;
 	}
 
+	//getters and setters
 	public String getContinent() {
 		return continent;
 	}
@@ -58,6 +62,7 @@ public class Country {
 	}
 	
 	@Override
+	//to string method
 	public String toString() {
 	        return "Code: " + this.code + "\nName: " + this.name + "\nContinent: " + this.continent + "\nHead Of State: " + this.headOfState + "\nSurface Area: " + this.surfaceArea + "\n";
 	 }

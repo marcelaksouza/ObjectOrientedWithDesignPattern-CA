@@ -1,5 +1,5 @@
 package ObjectOrientedWithDesignPattern_CA;
-//validations
+//validations class
 public class Validator {
 	
 	
@@ -40,7 +40,8 @@ public class Validator {
 			return false;
 		}
 	}
-		
+	
+    //if is in the continent list
 	public boolean isContinent(String userInput) {
 			for( Continent continent : Continent.values()) {
 				if( userInput.equalsIgnoreCase( continent.getContinent()) ) {

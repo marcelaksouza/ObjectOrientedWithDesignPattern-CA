@@ -1,5 +1,7 @@
 package ObjectOrientedWithDesignPattern_CA;
 
+//continent enum
+
 public enum Continent {
 	south_America("South America"),
 	north_America("North America"),
@@ -19,18 +21,8 @@ public enum Continent {
 		return continent;
 	}
 	
-	
-//	public static Continent getValueOf(String value) {
-//		
-//		if(value.equals("Europe")) {
-//			return europe;
-//		}
-//		
-//		return null;
-//	}
-	
+	//method that will check if the string passed belongs to the enum list
 	public static Continent getValueOf(String value) {
-      
 		for (Continent continetEnum : Continent.values()) {
             if (continetEnum.continent.equalsIgnoreCase(value)) {
                 return continetEnum;
@@ -38,8 +30,5 @@ public enum Continent {
         }
         return null;
     }
-	
-	
-}
 
-//we can use Continent.valueOf("Country1").continent();
+}
