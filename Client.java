@@ -49,7 +49,7 @@ public class Client {
 		//Enter surface area
 		System.out.println("Enter surface area");
 		String surfaceArea = readUserInput();
-		countryMap.put("surfacAarea", surfaceArea);
+		countryMap.put("surfaceArea", surfaceArea);
 
 		return countryMap;
 	}

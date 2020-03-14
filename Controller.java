@@ -73,15 +73,11 @@ public class Controller {
 	
 	public static void addCountry(HashMap<String, String> countrymap) {
 		
-		
-		String code = countrymap.get("code");
-		Continent continent = Continent.getValueOf(countrymap.get("continent"));
-		String name =  countrymap.get("name");
-		Float surfaceArea = Float.parseFloat(countrymap.get("surfaceArea"));
-		String headOfState = countrymap.get("headOfState");
-		Country country = new Country(code, continent, name , surfaceArea, headOfState);
-				  
-				 
+		Country country = new Country(countrymap.get("code"), 
+				   Continent.getValueOf(countrymap.get("continent")),
+				   countrymap.get("name"),
+				   Float.valueOf(countrymap.get("surfaceArea")),
+				   countrymap.get("headOfState"));
 		countryDAO.addCountry(country);
 		printOneByCode(countrymap.get("code"));
 	}
