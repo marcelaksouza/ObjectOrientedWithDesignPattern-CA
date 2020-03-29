@@ -5,24 +5,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 //db connect Mysql extends abstract Db Connect Factory class
 
-public class DbConnectMySQL extends DbConnectFactory {
+public class DbConnectMySql extends DbConnectFactory {
 	
 	//db is initiated only once though the life time of the program
-	private static DbConnectFactory instance = new DbConnectMySQL("52.50.23.197", "3306", "world", "cctstudent", "Pass1234!");
-	Connection conn;
-	String host;
-	String port;
-	String dbName;
-	String user;
-	String password;
+	private static DbConnectFactory instance = new DbConnectMySql();
+	private Connection conn;
+	String host = "52.50.23.197";
+	String port = "3306";
+	String dbName = "world";
+	String user = "cctstudent";
+	String password = "Pass1234!";
 	
 	//to make it more flexible I am passing this parameters to the constructor
-	private DbConnectMySQL(String host, String port, String dbName,String user, String password) {
-		this.host = host;
-		this.port = port;
-		this.dbName = dbName;
-		this.user = user;
-		this.password = password;
+	private DbConnectMySql() {
 	}
 
 	@Override
@@ -38,7 +33,7 @@ public class DbConnectMySQL extends DbConnectFactory {
 
 	//setter of the instance
 	public static void setInstance(DbConnectFactory instance) {
-		DbConnectMySQL.instance = instance;
+		DbConnectMySql.instance = instance;
 	}
 	
 	@Override

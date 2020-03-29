@@ -1,13 +1,12 @@
 package ObjectOrientedWithDesignPattern_CA;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 //controller class
 public class Controller {
 	private static Client view = new Client();
-	private static CountryDAO countryDAO = new CountryDAO();
+	private static countryDAO countryDAO = new MySqlCountryDAO();
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -45,7 +44,7 @@ public class Controller {
 		}break; 
 		case 5:{
 			//exit
-			DbConnectMySQL.getInstance().disconnect();;
+			DbConnectMySql.getInstance().disconnect();;
 			System.out.println("Good Bye");
 			System.exit(0);
 		}break; 
@@ -59,14 +58,9 @@ public class Controller {
 	// from the countryDAO get all entries from the db and put into a array list
 	// Then itenerate though it and print the results
 	public static void printAllCountries() {
-		try {
-			ArrayList<Country> countryList = countryDAO.getAllCountries();
-			for (Country country: countryList) {
-				System.out.println(country);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		ArrayList<Country> countryList = countryDAO.getAllCountries();
+		for (Country country: countryList) {
+			System.out.println(country);
 		}
 	}
 
