@@ -73,8 +73,12 @@ public class Controller {
 	//print one entry by name
 	//the method accept a string as a parameter and passed it to the contryDAO
 	//the first entry that matches the string is the one that will be returned 
-	public static void printOneByName(String name) {
-		System.out.println(countryDAO.getOneCountryByName(name));
+	public static void printOneByName(String value) {
+		ArrayList<Country> countryList = countryDAO.getCountryByName(value);
+		for (Country country: countryList) {
+			System.out.println(country);
+		}
+		
 	}
 	
 	//add country function

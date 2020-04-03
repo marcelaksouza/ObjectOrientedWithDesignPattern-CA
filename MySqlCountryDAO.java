@@ -65,9 +65,10 @@ public class MySqlCountryDAO implements countryDAO  {
 				Country crountry = new Country(code, continent , name ,SurfaceArea, HeadOfState);
 				//add to the array list
 				countryList.add(crountry);
-				stmt.close();
-				return countryList;
+				
 			}
+			stmt.close();
+			return countryList;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -79,7 +80,6 @@ public class MySqlCountryDAO implements countryDAO  {
 	//get one entry and create a object country
 	@Override
 	public Country getOneCountryByCode(String code) {
-		
 		try {
 			Statement stmt=	conn.createStatement();
 			String query = "SELECT Code, Name, Continent, SurfaceArea, HeadOfState FROM country WHERE Code =\"" + code +"\";";
@@ -107,30 +107,32 @@ public class MySqlCountryDAO implements countryDAO  {
 
 	//get one entry and create a object country
 	@Override
-	public Country getOneCountryByName(String name) {
-
+	public ArrayList<Country> getCountryByName(String value) {
 		try {
+			ArrayList<Country> countryList = new ArrayList<Country>();
+			String query = "SELECT Code, Name, Continent, SurfaceArea, HeadOfState FROM country WHERE Name LIKE \'%" + value +"%\';";
+			
 			Statement stmt=	conn.createStatement();
-			String query = "SELECT Code, Name, Continent, SurfaceArea, HeadOfState FROM country WHERE Name =\"" + name +"\";";
-			//execute second query and save the result set into the variable rs
 			ResultSet rs = stmt.executeQuery(query);
-
+			
 			while (rs.next()) {
-				String code = rs.getString("Code");	 
-				Continent continent = Continent.getValueOf(rs.getString("Continent")); 				
+				String code = rs.getString("Code");
+				Continent continent = Continent.getValueOf(rs.getString("Continent"));
+				String name = rs.getString("Name");	    				
 				Float SurfaceArea = rs.getFloat("SurfaceArea");
 				String HeadOfState = rs.getString("HeadOfState");
-				//create the object
+				//create the object Country
 				Country crountry = new Country(code, continent , name ,SurfaceArea, HeadOfState);
-
-				//return map
-				return crountry; 
+				//add to the array list
+				countryList.add(crountry);
 			}
-			//closing statement 
 			stmt.close();
-		} catch (Exception e) {
-			System.out.print(e);
+			return countryList;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		//closing statement 
 		return null;
 	}
 }

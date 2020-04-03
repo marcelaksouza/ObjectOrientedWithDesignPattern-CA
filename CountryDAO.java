@@ -17,6 +17,6 @@ public interface countryDAO {
 	Country getOneCountryByCode(String code);
 
 	//get one entry and create a object country
-	Country getOneCountryByName(String name);
+	ArrayList<Country> getCountryByName(String name);
 
 }
