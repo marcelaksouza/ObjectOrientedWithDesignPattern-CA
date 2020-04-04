@@ -27,26 +27,31 @@ public class Controller {
 	public static void mainMenuSwitch(){	
 		switch(view.readUserInputInt()){
 		case 1:{
-			//call method to get all the entries in the DB
+			//call method to get all the entries in the DB 
+			//go back to the start method
 			printAllCountries();
 			start();
 		}break;
 		case 2:{
 			//call method to get entry by code
+			//go back to the start method
 			printOneByCode(view.getByCodeForm());
 			start();
 		}break;
 		case 3:{
 			//call method to get entry by name
+			//go back to the start method
 			printOneByName(view.getByNameForm());
 			start();
 		}break;
 		case 4:{
 			//call method to add a new entry
+			//go back to the start method
 			addCountry(view.addCountryForm());
 			start();
 		}break; 
 		case 5:{
+			//end db connection 
 			//exit
 			DbConnectMySql.getInstance().disconnect();;
 			System.out.println("Good Bye");
@@ -58,9 +63,10 @@ public class Controller {
 			start();
 		}
 	}
-	// print all countries
-	// from the countryDAO get all entries from the db and put into a array list
-	// Then itenerate though it and print the results
+	/* print all countries
+	* from the countryDAO get all entries from the db and put into a array list
+	* Then iterate though it and print the results
+	*/
 	public static void printAllCountries() {
 		ArrayList<Country> countryList = countryDAO.getAllCountries();
 		for (Country country: countryList) {
@@ -85,9 +91,12 @@ public class Controller {
 		
 	}
 	
-	//add country function
-	//accepts a hashMap as a parameter and from its values create a new country 
-	//and add it to the database
+	/*add new country function
+	* this method accepts a hashMap as a parameter and passed its values to the Country.BuilderCountry
+	* a new instance of the Country is created using countryBuilder.build()and then passed as a parameter 
+	* to the countryDAO.addCountry function.
+	* countryDAO.addCountry function receive a Country as a parameter and add to the database
+	*/
 	public static void addCountry(HashMap<String, String> countryMap) {
 		Country.BuilderCountry countryBuilder = new Country.BuilderCountry(
 				countryMap.get("code"), 

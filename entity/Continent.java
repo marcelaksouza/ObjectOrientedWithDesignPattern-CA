@@ -22,6 +22,7 @@ public enum Continent {
 	}
 	
 	//method that will check if the string passed belongs to the enum list
+	//it will also ignore the case of captions 
 	public static Continent getValueOf(String value) {
 		for (Continent continetEnum : Continent.values()) {
             if (continetEnum.continent.equalsIgnoreCase(value)) {

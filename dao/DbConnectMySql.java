@@ -21,7 +21,7 @@ public class DbConnectMySql implements DbConnectInterface {
 	}
 
 	@Override
-	//@Override get connection from the constructor
+	//get connection from the constructor
 	public Connection getConnection() {
 		return conn;
 	}
@@ -37,7 +37,7 @@ public class DbConnectMySql implements DbConnectInterface {
 	}
 	
 	@Override
-	//@Override stabelish connection
+	// establish connection
 	public void connect()  {
 		if (conn != null) {
 			return;
@@ -66,7 +66,7 @@ public class DbConnectMySql implements DbConnectInterface {
 		}
 
 	@Override
-	//@Override disconnect
+	//this method close the instance connection
 	public void disconnect() {
 		if(conn != null) {
 			try {

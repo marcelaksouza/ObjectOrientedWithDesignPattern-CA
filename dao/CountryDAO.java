@@ -1,26 +1,26 @@
 package ObjectOrientedWithDesignPattern_CA.dao;
 
 import java.util.ArrayList;
-import ObjectOrientedWithDesignPattern_CA.view.*;
-import ObjectOrientedWithDesignPattern_CA.controller.*;
-import ObjectOrientedWithDesignPattern_CA.dao.*;
 import ObjectOrientedWithDesignPattern_CA.entity.*;
-import ObjectOrientedWithDesignPattern_CA.validation.*;
 
 public interface CountryDAO {
 
 	//add country 
-	//method accept Country as parameter and access it properties to add the new country to the db
+	//This method will add a new country entry in the database
 	void addCountry(Country country);
 
-	//method get all entries of the db tranform them into a object country 
-	//then add them to a arraylist
+	/*get All Countries method will get all entries of the db create a Country object and add 
+	* them to a arraylist
+	*/
 	ArrayList<Country> getAllCountries();
 
-	//get one entry and create a object country
+	//Method accept a string and return the corresponding Country object from the db
 	Country getOneCountryByCode(String code);
 
-	//get one entry and create a object country
+	/*get Country By Name method will get all entries of the db corresponding to the name value passed 
+	* then create a Country object and add 
+	* them to a arraylist
+	*/
 	ArrayList<Country> getCountryByName(String name);
 
 }
