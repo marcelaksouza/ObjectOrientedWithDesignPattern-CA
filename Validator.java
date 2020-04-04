@@ -8,7 +8,7 @@ public class Validator {
 	}
 	//validate if is only letters
     public boolean isString(String imput) {
-		if((imput).matches("[a-zA-Z]+")) {
+		if((imput).matches("[a-zA-Z ]+")) {
 			return true;
 		}
 		else {

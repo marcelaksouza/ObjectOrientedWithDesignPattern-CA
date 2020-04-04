@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 // Country DAO
 // Class that will interact with the db trough some of the CRUD functions
-public class MySqlCountryDAO implements countryDAO  {
+public class MySqlCountryDAO implements CountryDAO  {
 	private Connection conn;
 	
 	//connect to the db
@@ -29,19 +29,19 @@ public class MySqlCountryDAO implements countryDAO  {
 			PreparedStatement preparedStmt = conn.prepareStatement(query);
 			preparedStmt.setString(1, country.getCode());
 			preparedStmt.setString (2, country.getName());
-			preparedStmt.setString (3, country.getContinent());
+			preparedStmt.setString (3, country.getContinent().toString());
 			preparedStmt.setFloat (4, country.getSurfaceArea());
 			preparedStmt.setString (5, country.getHeadOfState());
 			//execute statement
 			preparedStmt.execute();
 			//close statement
 			preparedStmt.close();
-			System.out.print("inserido no database com sucesso ");
+			System.out.println("inserido no database com sucesso ");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.print("addCountry"+e);
+			System.out.println("addCountry"+e);
 		}
 	}
 	
@@ -62,9 +62,10 @@ public class MySqlCountryDAO implements countryDAO  {
 				Float SurfaceArea = rs.getFloat("SurfaceArea");
 				String HeadOfState = rs.getString("HeadOfState");
 				//create the object Country
-				Country crountry = new Country(code, continent , name ,SurfaceArea, HeadOfState);
+				Country.BuilderCountry countryBuilder = new Country.BuilderCountry(code, continent , name ,SurfaceArea, HeadOfState);
+				Country country = countryBuilder.build();
 				//add to the array list
-				countryList.add(crountry);
+				countryList.add(country);
 				
 			}
 			stmt.close();
@@ -92,10 +93,12 @@ public class MySqlCountryDAO implements countryDAO  {
 				Float SurfaceArea = rs.getFloat("SurfaceArea");
 				String HeadOfState = rs.getString("HeadOfState");
 				//create the object
-				Country crountry = new Country(code, continent , name ,SurfaceArea, HeadOfState);
-
+				Country.BuilderCountry countryBuilder = new Country.BuilderCountry(code, continent , name ,SurfaceArea, HeadOfState);
+				Country country = countryBuilder.build();
+				//add to the array list
+				
 				//return map
-				return crountry; 
+				return country; 
 			}
 			//closing statement 
 			stmt.close();
@@ -122,9 +125,10 @@ public class MySqlCountryDAO implements countryDAO  {
 				Float SurfaceArea = rs.getFloat("SurfaceArea");
 				String HeadOfState = rs.getString("HeadOfState");
 				//create the object Country
-				Country crountry = new Country(code, continent , name ,SurfaceArea, HeadOfState);
+				Country.BuilderCountry countryBuilder = new Country.BuilderCountry(code, continent , name ,SurfaceArea, HeadOfState);
+				Country country = countryBuilder.build();
 				//add to the array list
-				countryList.add(crountry);
+				countryList.add(country);
 			}
 			stmt.close();
 			return countryList;

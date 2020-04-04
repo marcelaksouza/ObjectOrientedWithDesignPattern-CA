@@ -6,7 +6,7 @@ import java.util.HashMap;
 //controller class
 public class Controller {
 	private static Client view = new Client();
-	private static countryDAO countryDAO = new MySqlCountryDAO();
+	private static CountryDAO countryDAO = new MySqlCountryDAO();
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -84,14 +84,17 @@ public class Controller {
 	//add country function
 	//accepts a hashMap as a parameter and from its values create a new country 
 	//and add it to the database
-	public static void addCountry(HashMap<String, String> countrymap) {
-	
-		countryDAO.addCountry(new Country(countrymap.get("code"), 
-				   Continent.getValueOf(countrymap.get("continent")),
-				   countrymap.get("name"),
-				   Float.valueOf(countrymap.get("surfaceArea")),
-				   countrymap.get("headOfState")));
-		printOneByCode(countrymap.get("code"));
+	public static void addCountry(HashMap<String, String> countryMap) {
+		Country.BuilderCountry countryBuilder = new Country.BuilderCountry(
+				countryMap.get("code"), 
+				Continent.getValueOf(countryMap.get("continent")),  
+				countryMap.get("name"),
+				Float.valueOf(countryMap.get("surfaceArea")),
+				countryMap.get("headOfState"));
+		
+		Country country = countryBuilder.build();
+		countryDAO.addCountry(country);
+		printOneByCode(countryMap.get("code"));
 	}
 }
 

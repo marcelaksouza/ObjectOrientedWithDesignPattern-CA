@@ -4,28 +4,28 @@ package ObjectOrientedWithDesignPattern_CA;
 
 public class Country {
 	//global variables
-	private String continent;
+	private Continent continent;
 	private String code;
 	private String name;
 	private String headOfState;
 	private float surfaceArea;
 
 	//constructor
-	public Country(String code, Continent continent, String name, float surfaceArea, String headOfState) {
+	public Country(BuilderCountry builder) {
 		super();
-		this.continent = continent.getContinent();
-		this.code = code;
-		this.name = name;
-		this.surfaceArea = surfaceArea;
-		this.headOfState = headOfState;
+		this.continent = builder.continent;
+		this.code = builder.code;
+		this.name = builder.name;
+		this.surfaceArea = builder.surfaceArea;
+		this.headOfState = builder.headOfState;
 	}
 
 	//getters and setters
-	public String getContinent() {
+	public Continent getContinent() {
 		return continent;
 	}
 
-	public void setContinent(String continent) {
+	public void setContinent(Continent continent) {
 		this.continent = continent;
 	}
 
@@ -66,5 +66,27 @@ public class Country {
 	public String toString() {
 	        return "Code: " + this.code + "\nName: " + this.name + "\nContinent: " + this.continent + "\nHead Of State: " + this.headOfState + "\nSurface Area: " + this.surfaceArea + "\n";
 	 }
+	
+	public static class BuilderCountry{
+		
+		private Continent continent;
+		private String code;
+		private String name;
+		private String headOfState;
+		private float surfaceArea;
+		
+		public BuilderCountry(String code, Continent continent, String name, float surfaceArea, String headOfState) {
+			this.continent = continent;
+			this.code = code;
+			this.name = name;
+			this.surfaceArea = surfaceArea;
+			this.headOfState = headOfState;
+		}
+		
+		public Country build() {
+			return new Country(this);
+		}
+	}
+	
 	
 }

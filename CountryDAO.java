@@ -1,9 +1,8 @@
 package ObjectOrientedWithDesignPattern_CA;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface countryDAO {
+public interface CountryDAO {
 
 	//add country 
 	//method accept Country as parameter and access it properties to add the new country to the db

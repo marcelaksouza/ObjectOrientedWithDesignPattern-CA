@@ -30,5 +30,9 @@ public enum Continent {
         }
         return null;
     }
+	@Override
+    public String toString(){
+        return continent;
+    }
 
 }

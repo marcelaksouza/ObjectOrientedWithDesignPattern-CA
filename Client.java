@@ -48,12 +48,12 @@ public class Client {
 		//Enter headOfState
 		System.out.println("Enter head of state");
 		String headOfState = readUserInputString();
-		countryMap.put("headOfstate", headOfState);
+		countryMap.put("headOfState", headOfState);
 		//Enter surface area
 		System.out.println("Enter surface area");
 		String surfaceArea = readUserInput();
 		countryMap.put("surfaceArea", surfaceArea);
-
+		
 		return countryMap;
 	}
 	//continent list it iterates through continent list and display them
@@ -66,7 +66,7 @@ public class Client {
 	//read user input
 	public String readUserInputString(){
 		Scanner sc = new Scanner(System.in);  // Create a Scanner object
-		String input = sc.next();  // Read user input
+		String input = sc.nextLine();  // Read user input
 		
 		if(validator.isString(input)) {
 			return input; 
@@ -77,7 +77,7 @@ public class Client {
 	//read user input it must be a int added validation
 	public int readUserInputInt(){
 		Scanner sc = new Scanner(System.in);  // Create a Scanner object
-		String input = sc.next();  // Read user input
+		String input = sc.nextLine();  // Read user input
 		
 		if(validator.isNumber(input)) {
 			return Integer.parseInt(input); 
@@ -88,7 +88,7 @@ public class Client {
 	//read user input it must be a String added validation
 	public String readUserInput(){
 		Scanner sc = new Scanner(System.in);  // Create a Scanner object
-		String input = sc.next();  // Read user input
+		String input = sc.nextLine();  // Read user input
 		return input;
 	}
 	
