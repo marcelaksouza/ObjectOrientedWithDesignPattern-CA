@@ -1,4 +1,7 @@
-package ObjectOrientedWithDesignPattern_CA;
+package ObjectOrientedWithDesignPattern_CA.validation;
+
+import ObjectOrientedWithDesignPattern_CA.entity.*;
+
 //validations class
 public class Validator {
 	

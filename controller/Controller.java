@@ -1,7 +1,11 @@
-package ObjectOrientedWithDesignPattern_CA;
+package ObjectOrientedWithDesignPattern_CA.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import ObjectOrientedWithDesignPattern_CA.view.*;
+import ObjectOrientedWithDesignPattern_CA.dao.*;
+import ObjectOrientedWithDesignPattern_CA.entity.*;
+
 
 //controller class
 public class Controller {

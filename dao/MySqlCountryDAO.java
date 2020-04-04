@@ -1,4 +1,4 @@
-package ObjectOrientedWithDesignPattern_CA;
+package ObjectOrientedWithDesignPattern_CA.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import ObjectOrientedWithDesignPattern_CA.entity.*;
 
 // Country DAO
 // Class that will interact with the db trough some of the CRUD functions

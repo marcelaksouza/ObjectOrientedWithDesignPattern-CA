@@ -1,4 +1,4 @@
-package ObjectOrientedWithDesignPattern_CA;
+package ObjectOrientedWithDesignPattern_CA.entity;
 
 //continent enum
 

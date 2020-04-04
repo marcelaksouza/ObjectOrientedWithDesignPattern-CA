@@ -1,8 +1,8 @@
-package ObjectOrientedWithDesignPattern_CA;
+package ObjectOrientedWithDesignPattern_CA.dao;
 
 import java.sql.Connection;
 //abstract Db Connect Factory class
-public abstract class DbConnectFactory {
+public abstract class DbConnect {
 
 	public abstract Connection getConnection();
 

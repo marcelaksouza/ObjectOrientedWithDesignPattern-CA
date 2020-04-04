@@ -1,6 +1,11 @@
-package ObjectOrientedWithDesignPattern_CA;
+package ObjectOrientedWithDesignPattern_CA.dao;
 
 import java.util.ArrayList;
+import ObjectOrientedWithDesignPattern_CA.view.*;
+import ObjectOrientedWithDesignPattern_CA.controller.*;
+import ObjectOrientedWithDesignPattern_CA.dao.*;
+import ObjectOrientedWithDesignPattern_CA.entity.*;
+import ObjectOrientedWithDesignPattern_CA.validation.*;
 
 public interface CountryDAO {
 

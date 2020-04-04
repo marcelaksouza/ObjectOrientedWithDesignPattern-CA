@@ -1,14 +1,14 @@
-package ObjectOrientedWithDesignPattern_CA;
+package ObjectOrientedWithDesignPattern_CA.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 //db connect Mysql extends abstract Db Connect Factory class
 
-public class DbConnectMySql extends DbConnectFactory {
+public class DbConnectMySql extends DbConnect {
 	
 	//db is initiated only once though the life time of the program
-	private static DbConnectFactory instance = new DbConnectMySql();
+	private static DbConnect instance = new DbConnectMySql();
 	private Connection conn;
 	String host = "52.50.23.197";
 	String port = "3306";
@@ -27,12 +27,12 @@ public class DbConnectMySql extends DbConnectFactory {
 	}
 	
 	//get the db instance created
-	public static DbConnectFactory getInstance() {
+	public static DbConnect getInstance() {
 		return instance;
 	}
 
 	//setter of the instance
-	public static void setInstance(DbConnectFactory instance) {
+	public static void setInstance(DbConnect instance) {
 		DbConnectMySql.instance = instance;
 	}
 	
