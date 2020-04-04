@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 //db connect Mysql extends abstract Db Connect Factory class
 
-public class DbConnectMySql extends DbConnect {
+public class DbConnectMySql implements DbConnectInterface {
 	
 	//db is initiated only once though the life time of the program
-	private static DbConnect instance = new DbConnectMySql();
+	private static DbConnectInterface instance = new DbConnectMySql();
 	private Connection conn;
 	String host = "52.50.23.197";
 	String port = "3306";
@@ -27,12 +27,12 @@ public class DbConnectMySql extends DbConnect {
 	}
 	
 	//get the db instance created
-	public static DbConnect getInstance() {
+	public static DbConnectInterface getInstance() {
 		return instance;
 	}
 
 	//setter of the instance
-	public static void setInstance(DbConnect instance) {
+	public static void setInstance(DbConnectInterface instance) {
 		DbConnectMySql.instance = instance;
 	}
 	

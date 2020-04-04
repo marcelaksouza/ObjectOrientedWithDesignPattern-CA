@@ -38,12 +38,16 @@ public class MySqlCountryDAO implements CountryDAO  {
 			preparedStmt.execute();
 			//close statement
 			preparedStmt.close();
-			System.out.println("inserido no database com sucesso ");
+			System.out.println("Included in the DB successfully  ");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("addCountry"+e);
+			//e.printStackTrace();
+			//System.out.println("addCountry"+e);
+			
+			if(e.getErrorCode() == 1062 ){
+				   System.out.println("Code is already in use for another Country");
+				}
 		}
 	}
 	

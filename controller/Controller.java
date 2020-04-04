@@ -95,7 +95,6 @@ public class Controller {
 				countryMap.get("name"),
 				Float.valueOf(countryMap.get("surfaceArea")),
 				countryMap.get("headOfState"));
-		
 		Country country = countryBuilder.build();
 		countryDAO.addCountry(country);
 		printOneByCode(countryMap.get("code"));
